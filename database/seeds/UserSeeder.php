@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
             App\User::create([
                 'name' => $faker->name,
                 'email' => $faker->unique()->safeEmail,
-                'status' => 0,
+                'status' => $faker->numberBetween($min = 0, $max = 1),
                 'password' => '$2y$10$TKh8H1.PfQx37YgCzwiKb.KjNyWgaHb9cbcoQgdIVFlYg7B77UdFm'//secret hash
             ]);
         }

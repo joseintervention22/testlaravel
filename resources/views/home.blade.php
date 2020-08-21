@@ -14,7 +14,9 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    TEST LARAVEL JOSE RUIZ REGALADO
+                    CORREO: jose220396@hotmail.com, joseintervention@gmail.com
+                    MOVIL: 9941064451
                 </div>
 
                 <table-component></table-component>

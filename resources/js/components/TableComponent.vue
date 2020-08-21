@@ -32,35 +32,24 @@
 
 <script>
 $(document).ready(function() {
+    todos();
+    $('#menu').change(function() { 
+       if($('#menu option:selected').val() == 1) { 
+           habilitados();
+       } 
+    });
     $('#menu').change(function() { 
        if($('#menu option:selected').val() == 2) { 
            deshabilitados();
        } 
     });
+    
      $('#menu').change(function() { 
-       if($('#menu option:selected').val() == 1) { 
-           habilitados();
+       if($('#menu option:selected').val() == 3) { 
+           todos();
        } 
     });
-    var table = $('#users-table').DataTable({
-        processing: true,
-        serverSide: true,
-        language: {
-            "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
-        },
-        ajax: {
-            url: "/users/list",
-            dataSrc: "data",
-            type: "GET"
-        },
-        columns: [
-            { data: 'id' },
-            { data: 'name' },
-            { data: 'email' },
-            { data: 'status' }
-        ]
-    });
-
+    
     function deshabilitados(){
         var table = $('#users-table').DataTable({
         processing: true,
@@ -88,6 +77,8 @@ $(document).ready(function() {
         var table = $('#users-table').DataTable({
         processing: true,
         serverSide: true,
+        "bDestroy": true,
+
         language: {
             "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
         },
@@ -104,6 +95,30 @@ $(document).ready(function() {
         ]
     });
     
+    }
+    function todos(){
+        $("#users-table").dataTable().fnDestroy();
+        var table = $('#users-table').DataTable({
+        processing: true,
+        serverSide: true,
+        "bDestroy": true,
+        language: {
+            "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+        },
+        ajax: {
+            url: "/users/list",
+            dataSrc: "data",
+            type: "GET"
+        },
+        columns: [
+            { data: 'id' },
+            { data: 'name' },
+            { data: 'email' },
+            { data: 'status' }
+        ]
+    });
+
+
     }
 });
 
